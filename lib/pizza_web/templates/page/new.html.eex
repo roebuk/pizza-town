@@ -1,0 +1,54 @@
+<h1>Submit A Recipe</h1>
+
+<%= form_for @changeset, Routes.page_path(@conn, :create), fn f -> %>
+
+  <div class="form-element">
+    <%= label(f, :name, "Name") %>
+    <%= text_input(f, :name, class: "form-element-input") %>
+    <%= error_tag(f, :name) %>
+  </div>
+
+
+  <div class="form-element">
+    <%= label(f, :description, "Description") %>
+    <%= textarea(f, :description, class: "form-element-textarea") %>
+    <%= error_tag(f, :description) %>
+  <div>
+
+  <button class="button" type="submit">Add Recipe</button>
+<% end %>
+
+
+
+
+  <%# <h2>Recipe Overview</h2>
+
+  <div class="form-element">
+    <label>How many pizzas will this make?</label>
+    <input class="form-element-input" type="text">
+  </div>
+
+  <div class="form-element">
+    <label>Total Duration</label>
+    <input class="form-element-input" type="text">
+  </div>
+
+  <div class="form-element">
+    <label>Oven Type</label>
+    <select class="form-element-input">
+      <option>Pizza Oven</option>
+      <option>Domesitic Oven</option>
+    </select>
+  </div>
+
+
+  <h2>Instructions</h2>
+
+  <div class="form-element">
+    <label>Step 1</label>
+    <textarea class="form-element-textarea"></textarea>
+  <div>
+ %>
+
+
+</form>

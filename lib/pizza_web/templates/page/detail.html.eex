@@ -1,0 +1,87 @@
+<div class="recipe-detail">
+
+  <div class="recipe-main">
+    <h1 class="recipe-heading"><%= @event.name %></h1>
+    <p class="recipe-description mod-detail"><%= @event.description %></p>
+
+    <h2>Instructions</h2>
+
+    <ol class="recipe-steps">
+      <li class="recipe-step-item">
+        <p class="recipe-step-number">Step 1</p>
+        <p class="recipe-step-text">Dissolve the yeast into 300g of room temperature water.</p>
+      </li>
+
+      <li class="recipe-step-item">
+        <p class="recipe-step-number">Step 2</p>
+        <p class="recipe-step-text">Put the flour into a tub or bowl. Slowly incorporate the yeast water. The dough should come together and look like a traditional biga. Cover and leave at room temperature for around 13 hours. Make sure it doesn't dry out.
+        </p>
+      </li>
+
+      <li class="recipe-step-item">
+        <p class="recipe-step-number">Step 3</p>
+        <p class="recipe-step-text">Open the San Marzano tomatoes. Put them through a food mill to remove the seeds and skin. Add Salt and a pinch of oregano to taste. Store in the refrigerator until later.</p>
+      </li>
+
+      <li class="recipe-step-item">
+        <p class="recipe-step-number">Step 4</p>
+        <p class="recipe-step-text">With an electric whisk or a mixer slowly add 120g of chilled water. Once this has been added. Add the salt and mix for 30 seconds. Add the oil and mix for another 30 seconds.</p>
+      </li>
+
+      <li class="recipe-step-item">
+        <p class="recipe-step-number">Step 5</p>
+        <p class="recipe-step-text">Split the dough into 4 equal pieces of around 260g. Ball these and allow to double in size, this should take around 2 hours. Take your tomato sauce out of the fridge and allow it to warm to room temperature.
+        </p>
+      </li>
+
+      <li class="recipe-step-item">
+        <p class="recipe-step-number">Step 6</p>
+        <p class="recipe-step-text">Stretch the dough out. Add the tomato sauce and mozzarella and you're ready to bake.
+        </p>
+      </li>
+    </ol>
+  </div>
+
+
+  <div class="recipe-overview">
+    <div class="recipe-overview-section">
+      <h2>Recipe Overview</h2>
+
+      <p>🍕 4 pizzas</p>
+      <p>⏲ 15 hours</p>
+      <p>🔥 Pizza Oven</p>
+      <p>💧 70% Hydration</p>
+    </div>
+
+
+    <div class="recipe-overview-section">
+      <h2>Ingredients</h2>
+
+      <p>💧 420g of water</p>
+      <p>🥨 600g Caputo 00</p>
+      <p>🍅 400g tin of San Marzano</p>
+      <p>🧂 12g Salt</p>
+      <p>🥯 6g Fresh Yeast</p>
+      <p>🛢 6g of Olive Oil<p>
+      <p>🧀 Handful of Buffalo Mozzeralla</p>
+      <p>🍃 Handful of Basil</p>
+    </div>
+
+    <div class="recipe-overview-section">
+      <h2>Equipment</h2>
+
+      Ooni Koda 16
+    </div>
+
+  </div>
+</div>
+
+<h2>Pictures</h2>
+<div class="spotlight-group" data-title="<%= @event.name %>" data-autofit="false" data-zoom="false" data-fullscreen="false" data-theme="false" data-maximize="false" data-minimize="false">
+  <a class="spotlight" href="<%= Routes.static_path(@conn, "/images/1.jpg") %>" data-description="Pizza">
+    <img class="image-preview" src="<%= Routes.static_path(@conn, "/images/1.jpg") %>" alt="pizza" loading="lazy">
+  </a>
+  <a class="spotlight" href="<%= Routes.static_path(@conn, "/images/2.jpg") %>" data-description="The crust">
+    <img class="image-preview" src="<%= Routes.static_path(@conn, "/images/2.jpg") %>" alt="The crust" loading="lazy">
+  </a>
+</div>

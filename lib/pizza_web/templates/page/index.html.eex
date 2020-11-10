@@ -1,0 +1,8 @@
+<div class="recipes">
+  <%= for event <- @events do %>
+    <a class="recipe" href="<%= Routes.page_path(@conn, :detail, event.slug) %>">
+      <h4 class="recipe-heading mod-list"><%= event.name %></h4>
+      <span class="recipe-description"><%= event.short_description %></span>
+    </a>
+  <% end %>
+</div>
