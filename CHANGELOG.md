@@ -2,6 +2,7 @@
 
 * Added Lazy Loading
 * Added alt tags to images
+* Add basic submit recipe form
 
 ### 0.0.2 - 9/11/20
 
