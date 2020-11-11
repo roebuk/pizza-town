@@ -3,16 +3,17 @@ defmodule Pizza.Repo.Migrations.CreateRecipe do
 
   def change do
     create table(:recipe) do
-      add(:name, :string)
-      add(:description, :string)
-      add(:slug, :string)
-      add(:duration, :integer)
-      add(:number_of_pizzas, :integer)
-      add(:oven_type, :string)
+      add(:name, :string, null: false)
+      add(:description, :text, null: false)
+      add(:slug, :string, null: false)
+      add(:duration, :integer, null: false)
+      add(:number_of_pizzas, :integer, null: false)
+      add(:oven_type, :string, null: false)
+      add(:steps, {:array, :text}, null: false)
 
       timestamps()
     end
 
-    create(index(:recipe, [:slug]))
+    create(unique_index(:recipe, [:slug]))
   end
 end

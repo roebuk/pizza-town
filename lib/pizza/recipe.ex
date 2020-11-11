@@ -4,8 +4,9 @@ defmodule Pizza.Recipe do
 
   alias Pizza.{Repo}
 
-  @fields [:name, :slug, :description]
-  @required [:name, :description]
+  @fields [:name, :slug, :description, :duration, :number_of_pizzas]
+  @required [:name, :description, :duration, :number_of_pizzas]
+  @ovens [:domestic, :pizza]
 
   schema "recipe" do
     field(:name, :string)
@@ -13,10 +14,16 @@ defmodule Pizza.Recipe do
     field(:description, :string)
     field(:duration, :integer)
     field(:number_of_pizzas, :integer)
-    field(:oven_type, Ecto.Enum, values: [:domestic, :pizza])
+    field(:oven_type, Ecto.Enum, values: @ovens)
+    field(:steps, {:array, :string})
     # field(:author, ??)
 
     timestamps()
+  end
+
+  @spec ovens :: [:domestic | :pizza]
+  def ovens() do
+    @ovens
   end
 
   def changeset(recipe, attrs \\ %{}) do
@@ -24,6 +31,10 @@ defmodule Pizza.Recipe do
     |> cast(attrs, @fields)
     |> validate_required(@required)
     |> generate_slug()
+    |> validate_inclusion(:number_of_pizzas, 1..50)
+    |> validate_inclusion(:duration, 1..200)
+    |> validate_inclusion(:oven_type, @ovens)
+    |> validate_length(:steps, min: 1, max: 30)
     |> unique_constraint(:slug)
     |> validate_required(:slug)
   end
