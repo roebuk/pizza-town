@@ -3,7 +3,7 @@ defmodule PizzaWeb.PageController do
 
   alias Pizza.{Recipe}
 
-  @events [
+  @recipes [
     %{
       name: "Neapolitan - 100% Biga",
       slug: "100-biga",
@@ -15,12 +15,14 @@ defmodule PizzaWeb.PageController do
 
   @spec index(Plug.Conn.t(), any) :: Plug.Conn.t()
   def index(conn, _params) do
-    render(conn, "index.html", events: @events)
+    recipes = Pizza.Recipe.get_recipes()
+
+    render(conn, "index.html", recipes: recipes)
   end
 
   @spec detail(Plug.Conn.t(), any) :: Plug.Conn.t()
   def detail(conn, _params) do
-    render(conn, "detail.html", event: Enum.at(@events, 0))
+    render(conn, "detail.html", recipe: Enum.at(@recipes, 0))
   end
 
   @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()

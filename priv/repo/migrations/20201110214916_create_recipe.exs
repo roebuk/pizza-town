@@ -6,6 +6,9 @@ defmodule Pizza.Repo.Migrations.CreateRecipe do
       add(:name, :string)
       add(:description, :string)
       add(:slug, :string)
+      add(:duration, :integer)
+      add(:number_of_pizzas, :integer)
+      add(:oven_type, :string)
 
       timestamps()
     end

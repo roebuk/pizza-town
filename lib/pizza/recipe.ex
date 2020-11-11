@@ -11,11 +11,15 @@ defmodule Pizza.Recipe do
     field(:name, :string)
     field(:slug, :string)
     field(:description, :string)
+    field(:duration, :integer)
+    field(:number_of_pizzas, :integer)
+    field(:oven_type, Ecto.Enum, values: [:domestic, :pizza])
+    # field(:author, ??)
 
     timestamps()
   end
 
-  def changeset(recipe, attrs \\ %{} ) do
+  def changeset(recipe, attrs \\ %{}) do
     recipe
     |> cast(attrs, @fields)
     |> validate_required(@required)

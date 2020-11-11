@@ -1,8 +1,8 @@
 <div class="recipe-detail">
 
   <div class="recipe-main">
-    <h1 class="recipe-heading"><%= @event.name %></h1>
-    <p class="recipe-description mod-detail"><%= @event.description %></p>
+    <h1 class="recipe-heading"><%= @recipe.name %></h1>
+    <p class="recipe-description mod-detail"><%= @recipe.description %></p>
 
     <h2>Instructions</h2>
 
@@ -77,7 +77,7 @@
 </div>
 
 <h2>Pictures</h2>
-<div class="spotlight-group" data-title="<%= @event.name %>" data-autofit="false" data-zoom="false" data-fullscreen="false" data-theme="false" data-maximize="false" data-minimize="false">
+<div class="spotlight-group" data-title="<%= @recipe.name %>" data-autofit="false" data-zoom="false" data-fullscreen="false" data-theme="false" data-maximize="false" data-minimize="false">
   <a class="spotlight" href="<%= Routes.static_path(@conn, "/images/1.jpg") %>" data-description="Pizza">
     <img class="image-preview" src="<%= Routes.static_path(@conn, "/images/1.jpg") %>" alt="pizza" loading="lazy">
   </a>

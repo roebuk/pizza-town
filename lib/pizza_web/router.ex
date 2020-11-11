@@ -20,6 +20,7 @@ defmodule PizzaWeb.Router do
     get("/recipe/:slug", PageController, :detail)
     get("/submit-a-recipe", PageController, :new)
     post("/submit-a-recipe", PageController, :create)
+    get("/open", PageController, :open)
   end
 
   # Other scopes may use custom stacks.
