@@ -38,7 +38,7 @@
 
   <button type="button">Add Step</button>
 
-  <button type="button">Remove Step</button>
+  <%= create_li(f, :steps) %>
 
   <div class="form-element">
     <%= label(f, :number_of_pizzas, "Step 1") %>

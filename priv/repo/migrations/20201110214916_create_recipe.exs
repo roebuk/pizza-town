@@ -9,7 +9,7 @@ defmodule Pizza.Repo.Migrations.CreateRecipe do
       add(:duration, :integer, null: false)
       add(:number_of_pizzas, :integer, null: false)
       add(:oven_type, :string, null: false)
-      add(:steps, {:array, :text}, null: false)
+      add(:steps, {:array, :text}, null: false, , default: [])
 
       timestamps()
     end
