@@ -1,15 +1,43 @@
-// We need to import the CSS so that webpack will load it.
-// The MiniCssExtractPlugin is used to separate it out into
-// its own CSS file.
-import "../css/app.css"
+import '../css/app.css';
 
-// webpack automatically bundles all modules in your
-// entry points. Those entry points can be configured
-// in "webpack.config.js".
-//
-// Import deps with the dep name or local files with a relative path, for example:
-//
-//     import {Socket} from "phoenix"
-//     import socket from "./socket"
-//
-import "phoenix_html"
+import 'phoenix_html';
+
+const stepsContainer = document.querySelector('.js-step-container');
+const stepsContainer2 = document.querySelector('#recipe_steps_container');
+
+
+const addItem = () => {
+  const firstItem = stepsContainer.querySelector('li').cloneNode(true);
+  stepsContainer2.append(firstItem);
+};
+
+const removeItem = (removeButton) => {
+  removeButton.closest('li').remove();
+};
+
+const recalcStepNumbers = () => {
+  Array.from(stepsContainer.querySelectorAll('label')).forEach((label, idx) => {
+    label.textContent = `Step ${idx + 1}`
+  })
+}
+
+
+if (stepsContainer) {
+  stepsContainer.addEventListener('click', e => {
+    e.preventDefault();
+    const targetClassList = e.target.classList;
+
+    if (targetClassList.contains('js-remove-step')) {
+      removeItem(e.target);
+      recalcStepNumbers()
+
+    }
+
+    if (targetClassList.contains('js-add-step')) {
+      addItem();
+      recalcStepNumbers();
+    }
+  });
+
+  recalcStepNumbers();
+}

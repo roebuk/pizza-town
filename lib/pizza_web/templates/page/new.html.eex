@@ -12,49 +12,37 @@
     <%= label(f, :description, "Description") %>
     <%= textarea(f, :description, class: "form-element-textarea") %>
     <%= error_tag(f, :description) %>
-  <div>
+  </div>
 
   <div class="form-element">
     <%= label(f, :duration, "Duration") %>
-    <%= text_input(f, :duration, class: "form-element-input") %>
+    <%= text_input(f, :duration, class: "form-element-input mod-small") %>
     <%= error_tag(f, :duration) %>
-  <div>
+  </div>
 
   <div class="form-element">
     <%= label(f, :number_of_pizzas, "Number of Pizzas") %>
-    <%= text_input(f, :number_of_pizzas, class: "form-element-input") %>
+    <%= text_input(f, :number_of_pizzas, class: "form-element-input mod-small") %>
     <%= error_tag(f, :number_of_pizzas) %>
-  <div>
+  </div>
 
 
   <div class="form-element">
     <%= label(f, :number_of_pizzas, "Type of Oven") %>
     <%= select(f, :oven_type, ovens(), class: "form-element-input") %>
     <%= error_tag(f, :number_of_pizzas) %>
-  <div>
+  </div>
 
 
   <h2>Steps</h2>
 
-  <button type="button">Add Step</button>
+  <div class="js-step-container">
+    <%= error_tag(f, :steps) %>
+    <%= array_input(f, :steps) %>
 
-  <%= create_li(f, :steps) %>
+    <button class="js-add-step" type="button">Add Step</button>
+  </div>
 
-  <div class="form-element">
-    <%= label(f, :number_of_pizzas, "Step 1") %>
-    <%= textarea(f, :number_of_pizzas, class: "form-element-textarea") %>
-    <%= error_tag(f, :number_of_pizzas) %>
-  <div>
-
-
-
-
-
-
-
-      <%# field(:duration, :integer) Pizza.Recip
-    field(:number_of_pizzas, :integer)
-    field(:oven_type, Ecto.Enum, values: [:domestic, :pizza]) %>
 
   <button class="button" type="submit">Add Recipe</button>
 <% end %>
