@@ -21,8 +21,16 @@ defmodule PizzaWeb.PageController do
   end
 
   @spec detail(Plug.Conn.t(), any) :: Plug.Conn.t()
-  def detail(conn, _params) do
-    render(conn, "detail.html", recipe: Enum.at(@recipes, 0))
+  def detail(conn, %{"slug" => slug}) do
+    case Pizza.Recipe.get_recipe_by(%{slug: slug}) do
+      nil ->
+        recipes = Pizza.Recipe.get_recipes()
+        render(conn, "index.html", recipes: recipes)
+
+      recipe ->
+        render(conn, "detail.html", recipe: recipe)
+        # Enum.at(@recipes, 0))
+    end
   end
 
   @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()

@@ -25,11 +25,15 @@ defmodule PizzaWeb.InputHelpers do
     name = Form.input_name(form, field) <> "[]"
     opts = Keyword.merge(input_options, [{:class, "form-element-textarea"}, {:name, name}])
 
-    content_tag :li do
+    content_tag :li, class: "step-item" do
       [
-        label(form, "Step"),
-        apply(Form, :textarea, [form, field, opts]),
-        link("Remove", to: "#", data: data, title: "remove", type: "button", class: "js-remove-step")
+        content_tag :div, class: "step-item-head" do
+          [
+            label(form, "Step", class: "form-element-label"),
+            link("Remove", to: "#", data: data, title: "remove", type: "button", class: "step-remove js-remove-step")
+          ]
+        end,
+        apply(Form, :textarea, [form, field, opts])
       ]
     end
   end

@@ -53,6 +53,11 @@ defmodule Pizza.Recipe do
     Repo.all(Pizza.Recipe)
   end
 
+  @spec get_recipe_by(map()) :: %Pizza.Recipe{} | nil
+  def get_recipe_by(params) do
+    Repo.get_by(Pizza.Recipe, params)
+  end
+
   @spec create_recipe(:invalid | %{optional(:__struct__) => none, optional(atom | binary) => any}) ::
           any
   def create_recipe(attrs \\ %{}) do

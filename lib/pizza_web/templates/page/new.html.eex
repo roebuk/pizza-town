@@ -3,36 +3,34 @@
 <%= form_for @changeset, Routes.page_path(@conn, :create), fn f -> %>
 
   <div class="form-element">
-    <%= label(f, :name, "Name") %>
+    <%= label(f, :name, "Recipe Name", class: "form-element-label") %>
     <%= text_input(f, :name, class: "form-element-input") %>
     <%= error_tag(f, :name) %>
   </div>
 
   <div class="form-element">
-    <%= label(f, :description, "Description") %>
+    <%= label(f, :description, "Description", class: "form-element-label") %>
     <%= textarea(f, :description, class: "form-element-textarea") %>
     <%= error_tag(f, :description) %>
   </div>
 
   <div class="form-element">
-    <%= label(f, :duration, "Duration") %>
+    <%= label(f, :duration, "Duration", class: "form-element-label") %>
     <%= text_input(f, :duration, class: "form-element-input mod-small") %>
     <%= error_tag(f, :duration) %>
   </div>
 
   <div class="form-element">
-    <%= label(f, :number_of_pizzas, "Number of Pizzas") %>
+    <%= label(f, :number_of_pizzas, "Number of Pizzas", class: "form-element-label") %>
     <%= text_input(f, :number_of_pizzas, class: "form-element-input mod-small") %>
     <%= error_tag(f, :number_of_pizzas) %>
   </div>
 
-
   <div class="form-element">
-    <%= label(f, :number_of_pizzas, "Type of Oven") %>
-    <%= select(f, :oven_type, ovens(), class: "form-element-input") %>
-    <%= error_tag(f, :number_of_pizzas) %>
+    <%= label(f, :oven_type, "Type of Oven", class: "form-element-label") %>
+    <%= select(f, :oven_type, ovens(), class: "form-element-select") %>
+    <%= error_tag(f, :oven_type) %>
   </div>
-
 
   <h2>Steps</h2>
 
@@ -40,7 +38,7 @@
     <%= error_tag(f, :steps) %>
     <%= array_input(f, :steps) %>
 
-    <button class="js-add-step" type="button">Add Step</button>
+    <button class="js-add-step link-button mod-add" type="button">Add Step</button>
   </div>
 
 

@@ -43,6 +43,10 @@ h4 {
   cursor: pointer;
 }
 
+.button[type="submit"] {
+  margin-top: 4rem
+}
+
 .button:focus,
 .button:hover {
   box-shadow: 0rem 0rem 0rem 0.3rem #a01010;
@@ -84,6 +88,35 @@ header {
   border-radius: 0.5rem;
   font-weight: bold;
   transition: box-shadow 0.3s ease-in-out;
+}
+
+.link-button {
+  display: inline-block;
+  text-decoration: none;
+  background: red;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.link-button.mod-add {
+  display: inline-block;
+  text-decoration: none;
+  background: #08a01a;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: box-shadow 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
+.link-button.mod-add:focus,
+.link-button.mod-add:hover {
+  box-shadow: 0rem 0rem 0rem 0.3rem #067313;
 }
 
 .add-recipe-link:focus,
@@ -159,6 +192,30 @@ header {
   }
 }
 
+.step-item + .step-item {
+  margin-top: 3rem;
+}
+
+.step-item:first-child .step-remove {
+  display: none;
+}
+
+.step-item-head {
+  display: flex;
+  justify-content: space-between;
+  max-width: 50rem;
+}
+
+.step-remove {
+  text-decoration: none;
+  color:#6f6f6f;
+}
+
+.step-remove:hover,
+.step-remove:focus {
+  color:#d62700;
+}
+
 .recipe-steps {
   list-style: none;
   padding:0;
@@ -188,22 +245,21 @@ header {
   margin-top: 6rem;
 }
 
-
-
 #recipe_steps_container {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 2rem;
 }
 
 
 .form-element + .form-element {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
-label {
+.form-element-label {
   font-weight: bold;
   display: block;
+  font-size: 1.7rem;
   margin-bottom: 0.6rem;
 }
 
@@ -211,8 +267,28 @@ label {
 .form-element-textarea {
   border: 1px solid grey;
   border-radius: 0.4rem;
-  padding: 0.7rem;
-  font-size: 1.6rem;
+  padding: 0.8rem;
+  font-size: 1.7rem;
+  font-family: inherit;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-element-input:focus,
+.form-element-textarea:focus,
+.form-element-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.4rem #c3deff;
+  border: 0.1rem solid #a6c3f5;
+}
+
+.form-element-select {
+  border: 1px solid grey;
+  border-radius: 0.4rem;
+  padding: 0.8rem;
+  font-size: 1.7rem;
+  font-family: inherit;
+  transition: box-shadow 0.3s ease;
+  text-transform: capitalize;
 }
 
 .form-element-input.mod-small {
