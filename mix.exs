@@ -45,7 +45,9 @@ defmodule Pizza.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:slugify, "~> 1.3"}
+      {:slugify, "~> 1.3"},
+      {:exexif, "~> 0.0.5"},
+      {:mogrify, "~> 0.8.0"}
     ]
   end
 

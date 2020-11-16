@@ -20,6 +20,8 @@ defmodule PizzaWeb.Router do
     get("/recipe/:slug", PageController, :detail)
     get("/submit-a-recipe", PageController, :new)
     post("/submit-a-recipe", PageController, :create)
+    get("/upload/:recipe_id", PageController, :upload)
+    post("/upload/:recipe_id", PageController, :process_upload)
     get("/open", PageController, :open)
   end
 

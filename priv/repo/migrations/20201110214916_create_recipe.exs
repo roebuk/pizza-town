@@ -16,12 +16,14 @@ defmodule Pizza.Repo.Migrations.CreateRecipe do
     end
 
     create table(:recipe_image) do
-      add(:name, :string)
-      add(:filename, :string)
+      add(:description, :string, null: false)
+      add(:filename, :string, null: false)
+      add(:recipe_id, references(:recipe), null: false)
 
       timestamps()
     end
 
     create(unique_index(:recipe, [:slug]))
+    create(index(:recipe_image, [:recipe_id]))
   end
 end

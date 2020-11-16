@@ -8,6 +8,7 @@ const stepsContainer2 = document.querySelector('#recipe_steps_container');
 
 const addItem = () => {
   const firstItem = stepsContainer.querySelector('li').cloneNode(true);
+  firstItem.querySelector('textarea').value = ''
   stepsContainer2.append(firstItem);
 };
 

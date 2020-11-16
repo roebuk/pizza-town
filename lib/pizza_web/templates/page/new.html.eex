@@ -4,7 +4,7 @@
 
   <div class="form-element">
     <%= label(f, :name, "Recipe Name", class: "form-element-label") %>
-    <%= text_input(f, :name, class: "form-element-input") %>
+    <%= text_input(f, :name, class: "form-element-input", autocomplete: "off") %>
     <%= error_tag(f, :name) %>
   </div>
 
@@ -16,13 +16,13 @@
 
   <div class="form-element">
     <%= label(f, :duration, "Duration", class: "form-element-label") %>
-    <%= text_input(f, :duration, class: "form-element-input mod-small") %>
+    <%= text_input(f, :duration, class: "form-element-input mod-small", autocomplete: "off", inputmode: "numeric", pattern: "[0-9]*") %>
     <%= error_tag(f, :duration) %>
   </div>
 
   <div class="form-element">
     <%= label(f, :number_of_pizzas, "Number of Pizzas", class: "form-element-label") %>
-    <%= text_input(f, :number_of_pizzas, class: "form-element-input mod-small") %>
+    <%= text_input(f, :number_of_pizzas, class: "form-element-input mod-small", autocomplete: "off", inputmode: "numeric", pattern: "[0-9]*") %>
     <%= error_tag(f, :number_of_pizzas) %>
   </div>
 

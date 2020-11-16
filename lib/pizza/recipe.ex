@@ -2,11 +2,12 @@ defmodule Pizza.Recipe do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Pizza.{Repo}
+  alias Pizza.{RecipeImage, Repo}
 
   @fields [:name, :slug, :description, :duration, :number_of_pizzas, :likes, :oven_type, :steps]
   @required [:name, :description, :duration, :number_of_pizzas, :likes, :oven_type, :steps]
   @ovens [:domestic, :pizza]
+  # @ovens [:neapolitan, :new_york, :american]
 
   schema "recipe" do
     field(:name, :string)
@@ -16,7 +17,10 @@ defmodule Pizza.Recipe do
     field(:number_of_pizzas, :integer)
     field(:likes, :integer, default: 0)
     field(:oven_type, Ecto.Enum, values: @ovens)
+    # field(:pizza_type, Ecto.Enum, values: @pizzas)
     field(:steps, {:array, :string})
+
+    has_many(:recipe_images, Pizza.RecipeImage)
     # field(:author, ??)
 
     timestamps()
@@ -55,11 +59,9 @@ defmodule Pizza.Recipe do
 
   @spec get_recipe_by(map()) :: %Pizza.Recipe{} | nil
   def get_recipe_by(params) do
-    Repo.get_by(Pizza.Recipe, params)
+    Repo.get_by(Pizza.Recipe, params) |> Repo.preload(:recipe_images)
   end
 
-  @spec create_recipe(:invalid | %{optional(:__struct__) => none, optional(atom | binary) => any}) ::
-          any
   def create_recipe(attrs \\ %{}) do
     %Pizza.Recipe{}
     |> changeset(attrs)

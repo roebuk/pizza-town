@@ -6,7 +6,7 @@ defmodule PizzaWeb.Endpoint do
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_pizza_key",
+    key: "pizza",
     signing_salt: "LTuxIYOy"
   ]
 
@@ -43,12 +43,15 @@ defmodule PizzaWeb.Endpoint do
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
 
   plug Plug.Parsers,
-    parsers: [:urlencoded, :multipart, :json],
+    parsers: [:urlencoded,  {:multipart, length: 20_000_000}, :json],
     pass: ["*/*"],
     json_decoder: Phoenix.json_library()
 
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+
+  plug(Plug.Static, at: "/media", from: {:pizza, "media"})
+
   plug PizzaWeb.Router
 end

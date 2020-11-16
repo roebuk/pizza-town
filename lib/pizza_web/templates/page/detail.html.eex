@@ -7,6 +7,16 @@
     <h2>Instructions</h2>
 
     <ol class="recipe-steps">
+    <%= for {step, idx} <- Enum.with_index @recipe.steps do %>
+      <li class="recipe-step-item">
+        <p class="recipe-step-number">Step <%= idx + 1 %></p>
+        <p class="recipe-step-text"><%= step %></p>
+      </li>
+
+    <% end %>
+    </ol>
+
+    <%# <ol class="recipe-steps">
       <li class="recipe-step-item">
         <p class="recipe-step-number">Step 1</p>
         <p class="recipe-step-text">Dissolve the yeast into 300g of room temperature water.</p>
@@ -39,7 +49,7 @@
         <p class="recipe-step-text">Stretch the dough out. Add the tomato sauce and mozzarella and you're ready to bake.
         </p>
       </li>
-    </ol>
+    </ol> %>
   </div>
 
 
@@ -47,9 +57,9 @@
     <div class="recipe-overview-section">
       <h2>Recipe Overview</h2>
 
-      <p>🍕 4 pizzas</p>
-      <p>⏲ 15 hours</p>
-      <p>🔥 Pizza Oven</p>
+      <p>🍕 <%= @recipe.number_of_pizzas %> pizzas</p>
+      <p>⏲ <%= @recipe.duration %> hours</p>
+      <p>🔥 <%= @recipe.oven_type |> Atom.to_string |> String.capitalize %> Oven</p>
       <p>💧 70% Hydration</p>
     </div>
 
@@ -77,11 +87,6 @@
 </div>
 
 <h2>Pictures</h2>
-<div class="spotlight-group" data-title="<%= @recipe.name %>" data-autofit="false" data-zoom="false" data-fullscreen="false" data-theme="false" data-maximize="false" data-minimize="false">
-  <a class="spotlight" href="<%= Routes.static_path(@conn, "/images/1.jpg") %>" data-description="Pizza">
-    <img class="image-preview" src="<%= Routes.static_path(@conn, "/images/1.jpg") %>" alt="pizza" loading="lazy">
-  </a>
-  <a class="spotlight" href="<%= Routes.static_path(@conn, "/images/2.jpg") %>" data-description="The crust">
-    <img class="image-preview" src="<%= Routes.static_path(@conn, "/images/2.jpg") %>" alt="The crust" loading="lazy">
-  </a>
+
+<%= render_recipe_images(@conn, @recipe) %>
 </div>

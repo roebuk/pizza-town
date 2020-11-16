@@ -1,0 +1,14 @@
+<%= form_for @changeset, Routes.page_path(@conn, :process_upload, @recipe_id), [multipart: true], fn f -> %>
+  <%= hidden_input(f, :recipe_id, value: @recipe_id) %>
+  <div class="form-element">
+    <%= label(f, :description, "Image Description", class: "form-element-label") %>
+    <%= text_input(f, :description, class: "form-element-input") %>
+    <%= error_tag(f, :description) %>
+  </div>
+  <div class="form-element">
+    <%= label(f, :image, "Upload an image", class: "form-element-label") %>
+    <%= file_input(f, :image, accept: "image/jpeg") %>
+    <%= error_tag(f, :image) %>
+  </div>
+  <button class="button">Upload</button>
+<% end %>
