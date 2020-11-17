@@ -76,4 +76,4 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 config :pizza,
-  images_folder: "/home/roebuk/projects/pizza/media"
+  images_folder: "/home/roebuk/projects/pizza/priv/static/recipes"

@@ -24,7 +24,7 @@ defmodule PizzaWeb.Endpoint do
     at: "/static",
     from: :pizza,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js recipes favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -50,8 +50,5 @@ defmodule PizzaWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-
-  plug(Plug.Static, at: "/media", from: {:pizza, "media"})
-
   plug PizzaWeb.Router
 end

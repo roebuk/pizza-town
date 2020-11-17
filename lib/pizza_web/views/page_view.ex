@@ -12,8 +12,8 @@ defmodule PizzaWeb.PageView do
   # </div>
 
   def render_image(_conn, recipe_id, image) do
-    image_url_large =  "/media/" <> Integer.to_string(recipe_id) <> "-" <> image.filename <> "-small.webp"
-    image_url_small =  "/media/" <> Integer.to_string(recipe_id) <> "-" <> image.filename <> "-small.webp"
+    image_url_large =  "/static/recipes/" <> Integer.to_string(recipe_id) <> "-" <> image.filename <> "-large.webp"
+    image_url_small =  "/static/recipes/" <> Integer.to_string(recipe_id) <> "-" <> image.filename <> "-small.webp"
 
     content_tag :a, class: "spotlight", href: image_url_large, data: [description: image.description]  do
       [

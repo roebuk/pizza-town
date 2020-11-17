@@ -2,12 +2,12 @@ defmodule Pizza.Recipe do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Pizza.{RecipeImage, Repo}
+  alias Pizza.{Ingredient, RecipeImage, Repo}
 
   @fields [:name, :slug, :description, :duration, :number_of_pizzas, :likes, :oven_type, :steps]
   @required [:name, :description, :duration, :number_of_pizzas, :likes, :oven_type, :steps]
   @ovens [:domestic, :pizza]
-  # @ovens [:neapolitan, :new_york, :american]
+  @pizza_style [:neapolitan, :new_york, :american, :other]
 
   schema "recipe" do
     field(:name, :string)
@@ -17,11 +17,15 @@ defmodule Pizza.Recipe do
     field(:number_of_pizzas, :integer)
     field(:likes, :integer, default: 0)
     field(:oven_type, Ecto.Enum, values: @ovens)
-    # field(:pizza_type, Ecto.Enum, values: @pizzas)
+    field(:pizza_type, :string)
+    field(:video_url, :string)
     field(:steps, {:array, :string})
 
-    has_many(:recipe_images, Pizza.RecipeImage)
-    # field(:author, ??)
+    has_many(:recipe_images, RecipeImage)
+    has_many(:ingredients, Ingredient)
+
+    # field(:author, :string)
+    # field(:author_link, :string)
 
     timestamps()
   end

@@ -1,10 +1,13 @@
+import Spotlight from 'spotlight.js';
+
 import '../css/app.css';
 
 import 'phoenix_html';
 
-const stepsContainer = document.querySelector('.js-step-container');
-const stepsContainer2 = document.querySelector('#recipe_steps_container');
-
+const $ = document.querySelector.bind(document);
+const stepsContainer = $('.js-step-container');
+const stepsContainer2 = $('#recipe_steps_container');
+const addStepButton = $('.js-add-step')
 
 const addItem = () => {
   const firstItem = stepsContainer.querySelector('li').cloneNode(true);
@@ -30,13 +33,20 @@ if (stepsContainer) {
 
     if (targetClassList.contains('js-remove-step')) {
       removeItem(e.target);
-      recalcStepNumbers()
+      recalcStepNumbers();
 
+      addStepButton.style.display = 'block';
     }
 
     if (targetClassList.contains('js-add-step')) {
       addItem();
       recalcStepNumbers();
+
+      console.log(stepsContainer2.childNodes.length, e.target)
+
+      if (stepsContainer2.childNodes.length >= 10) {
+        addStepButton.style.display = 'none';
+      }
     }
   });
 

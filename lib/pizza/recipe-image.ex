@@ -27,8 +27,6 @@ defmodule Pizza.RecipeImage do
     |> validate_required(@required)
   end
 
-
-
   # This needs some more work on the error handling case
   @spec create_image(map()) :: {:ok, Ecto.Changeset.t()} | {:error, Ecto.Changeset.t()}
   def create_image(attrs \\ %{}) do
