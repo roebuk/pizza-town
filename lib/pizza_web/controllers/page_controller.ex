@@ -26,7 +26,11 @@ defmodule PizzaWeb.PageController do
 
   @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
-    changeset = Recipe.changeset(%Recipe{})
+    changeset = Recipe.changeset(%Recipe{ ingredients: [
+      %Pizza.Ingredient{name: "10 grams", icon: :flour},
+      %Pizza.Ingredient{name: "10 grams", icon: :water}
+      ] })
+
     render(conn, "new.html", changeset: changeset)
   end
 

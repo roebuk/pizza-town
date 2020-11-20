@@ -2,6 +2,8 @@
 
 <%= form_for @changeset, Routes.page_path(@conn, :create), fn f -> %>
 
+
+
   <div class="form-element">
     <%= label(f, :name, "Recipe Name", class: "form-element-label") %>
     <%= text_input(f, :name, class: "form-element-input", autocomplete: "off") %>
@@ -32,6 +34,12 @@
     <%= error_tag(f, :oven_type) %>
   </div>
 
+  <div class="form-element">
+    <%= label(f, :pizza_type, "Pizza Type", class: "form-element-label") %>
+    <%= select(f, :pizza_type, pizza_types(), class: "form-element-select") %>
+    <%= error_tag(f, :pizza_type) %>
+  </div>
+
   <h2>Steps</h2>
 
   <div class="js-step-container">
@@ -41,41 +49,19 @@
     <button class="js-add-step link-button mod-add" type="button">Add Step</button>
   </div>
 
+  <h2>Ingredients</h2>
+
+  <%= inputs_for f, :ingredients, fn ing -> %>
+    <%= label(ing, :icon, class: "form-element-label") %>
+    <%= text_input(ing, :icon, class: "form-element-input") %>
+    <%= error_tag(f, :icon) %>
+
+    <%= label(ing, :name, class: "form-element-label") %>
+    <%= text_input(ing, :name, class: "form-element-input") %>
+    <%= error_tag(f, :name) %>
+  <% end %>
 
   <button class="button" type="submit">Add Recipe</button>
 <% end %>
-
-
-
-
-  <%# <h2>Recipe Overview</h2>
-
-  <div class="form-element">
-    <label>How many pizzas will this make?</label>
-    <input class="form-element-input" type="text">
-  </div>
-
-  <div class="form-element">
-    <label>Total Duration</label>
-    <input class="form-element-input" type="text">
-  </div>
-
-  <div class="form-element">
-    <label>Oven Type</label>
-    <select class="form-element-input">
-      <option>Pizza Oven</option>
-      <option>Domesitic Oven</option>
-    </select>
-  </div>
-
-
-  <h2>Instructions</h2>
-
-  <div class="form-element">
-    <label>Step 1</label>
-    <textarea class="form-element-textarea"></textarea>
-  <div>
- %>
-
 
 </form>

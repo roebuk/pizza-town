@@ -35,7 +35,13 @@ defmodule PizzaWeb.PageView do
     end
   end
 
+  @spec ovens :: [atom()]
   def ovens() do
     Pizza.Recipe.ovens()
+  end
+
+  @spec pizza_types :: [atom()]
+  def pizza_types() do
+    Pizza.Recipe.pizza_types()
   end
 end

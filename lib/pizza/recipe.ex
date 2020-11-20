@@ -4,8 +4,8 @@ defmodule Pizza.Recipe do
 
   alias Pizza.{Ingredient, RecipeImage, Repo}
 
-  @fields [:name, :slug, :description, :duration, :number_of_pizzas, :likes, :oven_type, :steps]
-  @required [:name, :description, :duration, :number_of_pizzas, :likes, :oven_type, :steps]
+  @fields [:name, :slug, :description, :duration, :number_of_pizzas, :likes, :oven_type, :pizza_type, :steps]
+  @required [:name, :description, :duration, :number_of_pizzas, :likes, :oven_type, :pizza_type, :steps]
   @ovens [:domestic, :pizza]
   @pizza_style [:neapolitan, :new_york, :american, :other]
 
@@ -21,8 +21,8 @@ defmodule Pizza.Recipe do
     field(:video_url, :string)
     field(:steps, {:array, :string})
 
-    has_many(:recipe_images, RecipeImage)
-    has_many(:ingredients, Ingredient)
+    has_many(:recipe_images, RecipeImage, on_delete: :delete_all)
+    has_many(:ingredients, Ingredient, on_delete: :delete_all)
 
     # field(:author, :string)
     # field(:author_link, :string)
@@ -35,9 +35,15 @@ defmodule Pizza.Recipe do
     @ovens
   end
 
+  def pizza_types() do
+    @pizza_style
+    # :new_york |> Atom.to_string |> String.split("_") |> Enum.map(&String.capitalize/1) |> Enum.join(" ")
+  end
+
   def changeset(recipe, attrs \\ %{}) do
     recipe
     |> cast(attrs, @fields)
+    |> cast_assoc(:ingredients, with: &Ingredient.changeset/2)
     |> validate_required(@required)
     |> generate_slug()
     |> validate_inclusion(:number_of_pizzas, 1..50)

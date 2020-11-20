@@ -271,6 +271,8 @@ header {
   font-size: 1.7rem;
   font-family: inherit;
   transition: box-shadow 0.3s ease;
+  width: 50rem;
+  max-width: 100%;
 }
 
 .form-element-input:focus,
@@ -296,7 +298,7 @@ header {
 }
 
 .form-element-textarea {
-  width: 50rem;
+
   height: 13rem;
 }
 

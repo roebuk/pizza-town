@@ -38,4 +38,30 @@ defmodule PizzaWeb.InputHelpers do
     end
   end
 
+
+  def sample(form, x) do
+    # IO.inspect(form)
+    # IO.inspect(x)
+
+    label(x, :name, class: "control-label")
+    text_input(x, :name, class: "form-element-input")
+
+    content_tag :li, class: "oi-oi" do
+      [
+        # for {val, _idx} <- Enum.with_index(values) do
+        #   content_tag :li, class: "oi-oi" do
+        #   [
+        #     label(form, val.icon, class: "form-element-label"),
+        #     text_input(form, :name, class: "form-element-input")
+        #   ]
+        # end
+        # end
+
+    #     text_input()
+    #     text_input(form, :number_of_pizzas,
+    #         field(:icon, Ecto.Enum, values: @icons)
+    # field(:name, :string)
+      ]
+    end
+  end
 end
