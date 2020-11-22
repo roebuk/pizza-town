@@ -52,3 +52,30 @@ if (stepsContainer) {
 
   recalcStepNumbers();
 }
+
+
+(function () {
+  const ingContainer = $('.js-ing-container')
+  const addIngredientBtn = $('.js-add-ingredient');
+
+
+  const addIng = () => {
+    const firstItem = $('.js-ingredient').cloneNode(true);
+    ingContainer.append(firstItem);
+
+
+  };
+
+
+  ingContainer.addEventListener('click', e => {
+    e.preventDefault();
+    const targetClassList = e.target.classList;
+    if (targetClassList.contains('js-add-ingredient')) {
+      addIng();
+    }
+
+
+  });
+
+
+})()

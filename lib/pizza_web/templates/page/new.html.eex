@@ -51,15 +51,27 @@
 
   <h2>Ingredients</h2>
 
-  <%= inputs_for f, :ingredients, fn ing -> %>
-    <%= label(ing, :icon, class: "form-element-label") %>
-    <%= text_input(ing, :icon, class: "form-element-input") %>
-    <%= error_tag(f, :icon) %>
+  <div class="js-ing-container">
+    <%= inputs_for f, :ingredients, fn ing -> %>
+      <div style="display:flex" class="js-ingredient">
 
-    <%= label(ing, :name, class: "form-element-label") %>
-    <%= text_input(ing, :name, class: "form-element-input") %>
-    <%= error_tag(f, :name) %>
-  <% end %>
+        <%= hidden_input(ing, :index) %>
+        <div>
+        <%= label(ing, :icon, class: "form-element-label") %>
+        <%= select(ing, :icon, icons(), class: "form-element-select") %>
+        <%= error_tag(ing, :icon) %>
+        </div>
+
+        <div>
+        <%= label(ing, :name, class: "form-element-label") %>
+        <%= text_input(ing, :name, class: "form-element-input") %>
+        <%= error_tag(ing, :name) %>
+        </div>
+      </div>
+    <% end %>
+
+    <button class="js-add-ingredient link-button mod-add">Add Ingredient</button>
+  </div>
 
   <button class="button" type="submit">Add Recipe</button>
 <% end %>

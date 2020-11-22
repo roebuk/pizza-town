@@ -16,6 +16,7 @@ defmodule Pizza.Ingredient do
     timestamps()
   end
 
+  def icons(), do: @icons
   def changeset(recipe_image, attrs \\ %{}) do
     recipe_image
     |> cast(attrs, @fields)
